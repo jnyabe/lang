@@ -1,0 +1,6 @@
+SRCS = $(wildcard *.cpp)
+OBJS = $(SRCS:.cpp=.o)
+
+CXX = clang++
+CXXFLAGS = -g -O2 -std=c++11
+LDFLAGS =

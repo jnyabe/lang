@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Util</name>
+    </assembly>
+    <members>
+        <member name="T:Test.MathUtil">
+            <summary>
+            数値計算ユーティリティー
+            </summary>
+        </member>
+        <member name="M:Test.MathUtil.Add(System.Double,System.Double)">
+            <summary>
+            2つの倍精度浮動小数点を加算する
+            </summary>
+            <remarks>
+                <para>
+            補足
+            </para>
+            </remarks>
+            <param name="n">第一オペランド</param>
+            <param name="m">第二オペランド</param>
+            <returns>結果値</returns>
+        </member>
+        <member name="M:Test.MathUtil.Sub(System.Double,System.Double)">
+            <summary>
+            2つの倍精度浮動小数点を減算する
+            </summary>
+            <remarks>
+                <para>
+            補足
+            </para>
+            </remarks>
+            <param name="n">第一オペランド</param>
+            <param name="m">第二オペランド</param>
+            <returns>結果値</returns>
+        </member>
+        <member name="M:Test.MathUtil.Mul(System.Double,System.Double)">
+            <summary>
+            2つの倍精度浮動小数点を乗算する
+            </summary>
+            <remarks>
+                <para>
+            補足
+            </para>
+            </remarks>
+            <param name="n">第一オペランド</param>
+            <param name="m">第二オペランド</param>
+            <returns>結果値</returns>
+        </member>
+        <member name="M:Test.MathUtil.Div(System.Double,System.Double)">
+            <summary>
+            2つの倍精度浮動小数点を除算する
+            </summary>
+            <remarks>
+                <para>
+            補足
+            </para>
+            </remarks>
+            <param name="n">第一オペランド</param>
+            <param name="m">第二オペランド</param>
+            <returns>結果値</returns>
+        </member>
+        <member name="T:Test.PrintUtil">
+            <summary>
+            プリント用のユーティリティークラス
+            </summary>
+        </member>
+        <member name="M:Test.PrintUtil.Print(System.Int32)">
+            <summary>
+            整数値をプリントする
+            </summary>
+            <remarks>
+                <para>
+            補足
+            </para>
+            </remarks>
+            <param name="n">プリントする整数値</param>
+        </member>
+        <member name="M:Test.PrintUtil.Print(System.Single)">
+            <summary>
+            浮動小数点をプリントする
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="n">プリントする浮動小数点</param>
+        </member>
+        <member name="M:Test.PrintUtil.Print(System.Double)">
+            <summary>
+            倍精度浮動小数点をプリントする
+            </summary>
+            <remarks>
+            </remarks>
+            <param name="n">プリントする倍精度浮動小数点</param>
+        </member>
+        <member name="M:Test.PrintUtil.Print(System.String)">
+            <summary>
+            文字列をプリントする
+            </summary>
+            <remarks>
+                <para name="str">
+            String to be printted
+            </para>
+            </remarks>
+            <param name="str">プリントする文字列</param>
+        </member>
+    </members>
+</doc>

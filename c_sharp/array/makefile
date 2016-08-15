@@ -1,0 +1,2 @@
+all:
+	gmcs $(wildcard *.cs)

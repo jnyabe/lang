@@ -1,0 +1,3 @@
+SRCS = $(wildcard *.cs)
+
+all: 

@@ -1,0 +1,18 @@
+<script>
+  // 0.
+  // var speak = function(){ alert("hello");}
+  // speak();
+  
+  // 1.
+  // ( function() { alert("hello"); })();
+
+  // 2.
+  function outer() {
+  var inner = function() {
+  alert("hello");
+  }
+  return inner;
+  }
+  var f = outer();
+  f();
+</script>

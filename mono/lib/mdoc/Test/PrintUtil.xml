@@ -1,0 +1,125 @@
+<Type Name="PrintUtil" FullName="Test.PrintUtil">
+  <TypeSignature Language="C#" Value="public class PrintUtil" />
+  <TypeSignature Language="ILAsm" Value=".class public auto ansi beforefieldinit PrintUtil extends System.Object" />
+  <AssemblyInfo>
+    <AssemblyName>Util</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>
+            プリント用のユーティリティークラス
+            </summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public PrintUtil ();" />
+      <MemberSignature Language="ILAsm" Value=".method public hidebysig specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberType>Constructor</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <Parameters />
+      <Docs>
+        <summary>To be added.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Print">
+      <MemberSignature Language="C#" Value="public static void Print (double n);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Print(float64 n) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n" Type="System.Double" />
+      </Parameters>
+      <Docs>
+        <param name="n">プリントする倍精度浮動小数点</param>
+        <summary>
+            倍精度浮動小数点をプリントする
+            </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Print">
+      <MemberSignature Language="C#" Value="public static void Print (int n);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Print(int32 n) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n" Type="System.Int32" />
+      </Parameters>
+      <Docs>
+        <param name="n">プリントする整数値</param>
+        <summary>
+            整数値をプリントする
+            </summary>
+        <remarks>
+          <para>
+            補足
+            </para>
+        </remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Print">
+      <MemberSignature Language="C#" Value="public static void Print (float n);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Print(float32 n) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="n" Type="System.Single" />
+      </Parameters>
+      <Docs>
+        <param name="n">プリントする浮動小数点</param>
+        <summary>
+            浮動小数点をプリントする
+            </summary>
+        <remarks />
+      </Docs>
+    </Member>
+    <Member MemberName="Print">
+      <MemberSignature Language="C#" Value="public static void Print (string str);" />
+      <MemberSignature Language="ILAsm" Value=".method public static hidebysig void Print(string str) cil managed" />
+      <MemberType>Method</MemberType>
+      <AssemblyInfo>
+        <AssemblyVersion>0.0.0.0</AssemblyVersion>
+      </AssemblyInfo>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="str" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <param name="str">プリントする文字列</param>
+        <summary>
+            文字列をプリントする
+            </summary>
+        <remarks>
+          <para name="str">
+            String to be printted
+            </para>
+        </remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

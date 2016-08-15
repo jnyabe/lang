@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="Test01.dll" total="2" failures="0" not-run="0" date="2013-02-26" time="14:32:50">
+  <environment nunit-version="2.4.8.0" clr-version="2.0.50727.1433" os-version="Unix 12.2.1.0" platform="Unix" cwd="/Users/yabe/work/lang/mono/nunit" machine-name="auckland.local" user="yabe" user-domain="auckland.local" />
+  <culture-info current-culture="ja-JP" current-uiculture="ja-JP" />
+  <test-suite name="Test01.dll" success="True" time="0.032" asserts="0">
+    <results>
+      <test-suite name="Test01" success="True" time="0.013" asserts="0">
+        <results>
+          <test-case name="Test01.Test01_1" executed="True" success="True" time="0.005" asserts="1" />
+          <test-case name="Test01.Test01_2" executed="True" success="True" time="0.000" asserts="1" />
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

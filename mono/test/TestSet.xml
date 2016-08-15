@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TestSet</name>
+    </assembly>
+    <members>
+        <member name="M:Test.TypeTest.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Test.TypeTest.Run">
+            <summary>
+            テストの実行
+            </summary>
+        </member>
+        <member name="M:Test.TypeTest.TestSize">
+            <summary>
+            ビルトインタイプのサイズテスト
+            </summary>
+        </member>
+    </members>
+</doc>

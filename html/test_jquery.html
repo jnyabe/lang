@@ -1,0 +1,16 @@
+<html>
+  <head>
+    <script type="text/javascript" src="./jquery-1.11.1.min.js"></script>
+    <script>
+      $(document).ready(function(){
+      $.get("./version.txt", function(data){
+      $("div#ver").html("2.00");
+      }
+      })
+    </script>
+  </head>
+  <body>
+    <h1>バージョン外部読みこみのテストです。<div id="ver" style="display: inline-block;_display: inline;"/></div> がバージョンです。</h1>
+  </body>
+</html>
+
