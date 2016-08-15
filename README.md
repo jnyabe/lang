@@ -1,2 +1,2 @@
-Test bed for programming language
+Excersise to master programming languages
 ====
