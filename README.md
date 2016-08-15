@@ -1,2 +1,2 @@
-Excersise to master programming languages
+Exercise to master programming languages
 ====
