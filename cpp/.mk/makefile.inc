@@ -2,10 +2,10 @@ all: $(BIN)
 
 $(BIN): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $(OBJS) $(LDFLAGS)
-%.cpp:%.o
+%.o:%.cpp
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
 
-%.c:%.o
+%.o:%.c
 	$(CXX) -c $(CXXFLAGS) -o $@ $<
 
 
