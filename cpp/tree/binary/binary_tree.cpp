@@ -1,3 +1,4 @@
+#include "binary_tree.h"
 
 BTree::~BTree()
 {
@@ -12,23 +13,23 @@ void BTree::Insert(int n)
 	
 	while(*ptr != nullptr)
 	{
-		if(*ptr->m_value < n)
+		if((*ptr)->m_value < n)
 		{
-			parent = ptr;
-			ptr = &(ptr->m_right);
+			parent = (*ptr);
+			ptr = &((*ptr)->m_right);
 		} else {
-			parent = ptr;			
-			ptr = &(ptr->m_left);
+			parent = (*ptr);			
+			ptr = &((*ptr)->m_left);
 		}
 	}
 	*ptr = node;
-	node->parent = parent;
+	node->m_parent = parent;
 }
 
 void BTree::Delete(int n)
 {
 	Node* node = find(n);
-	if(node == nullPtr)
+	if(node == nullptr)
 	{
 		return;
 	}
@@ -44,7 +45,7 @@ void BTree::Find()
 	
 }
 
-void BTree::Dump()
+void BTree::Dump() const
 {
 	
 }
@@ -58,17 +59,19 @@ Node* BTree::find(int n)
 	{
 		if(node->m_value == n)
 		{
-			return node
+			return node;
 		}
+		
 		if(node->m_value < n)
 		{
-			node = node->right;
+			node = node->m_right;
 		}
 		if(node->m_value > n)
 		{
-			node = node->left;
+			node = node->m_left;
 		}
 	}
 	// not found
 	return nullptr;
 }
+
