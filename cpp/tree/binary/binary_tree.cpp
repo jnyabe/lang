@@ -52,19 +52,71 @@ void BTree::Delete(int n)
 	// no children
 	if(node->m_left == nullptr && node->m_right == nullptr)
 	{
-		// set nullptr to the link fomr parent
-		if(node->m_parent && node->m_parent->m_left == node)
+		if(node->m_parent)
 		{
-			node->m_parent->m_left = nullptr;
+			// set nullptr to the link fomr parent
+			Node** ref = (node->m_parent->m_left == node)?
+				&(node->m_parent->m_left) : &(node->m_parent->m_right);
+			*ref = nullptr;
+		} else {
+			m_root = nullptr;
 		}
-
-		if(node->m_parent && node->m_parent->m_right == node)
-		{
-			node->m_parent->m_right = nullptr;
-		}		
-
 		// delete node.
 		delete node;
+		return;
+	}
+
+	// 1 child
+	if(node->m_left == nullptr || node->m_right == nullptr)
+	{
+		Node* child = (node->m_left)? node->m_left: node->m_right;
+		if(node->m_parent)
+		{
+			// set nullptr to the link fomr parent
+			Node** ref = (node->m_parent->m_left == node)?
+				&(node->m_parent->m_left) : &(node->m_parent->m_right);
+			*ref = child;
+			child->m_parent = node->m_parent;
+		} else {
+			m_root = child;
+			child->m_parent = nullptr;
+		}
+		// delete node.
+		delete node;
+		return;
+	}
+
+	// 2 children
+	// printf("** CANNOT DELETE %d**\n", node->m_value);
+	Node* replace = findMax(node->m_left);
+	printf("%d will be replace with %d\n",
+		   node->m_value, replace->m_value);
+	if(replace)
+	{
+		replace->m_parent->m_right = replace->m_left;
+		if(replace->m_left)
+		{
+			replace->m_left->m_parent  = replace->m_parent;
+		}
+
+		replace->m_left  = node->m_left;
+		replace->m_right = node->m_right;
+		
+		if(node->m_parent)
+		{
+			Node** ref = (node->m_parent->m_left == node)?
+				&(node->m_parent->m_left) : &(node->m_parent->m_right);
+			*ref = replace;
+			replace->m_parent = node->m_parent;
+		} else {
+			m_root = replace;
+			replace->m_parent = nullptr;
+		}
+		
+		delete node;
+		return;
+	} else {
+		printf("No max!!!\n");
 	}
 }
 
@@ -150,6 +202,36 @@ BTree::Node* BTree::find(int n)
 	return nullptr;
 }
 
+BTree::Node* BTree::findMax(Node *node)
+{
+	Node* maxNode = node;
+
+	if(node == nullptr)
+	{
+		return nullptr;
+	}
+	
+	while(node->m_right != nullptr)
+	{
+		node = node->m_right;
+	}
+	
+	return node;
+}
+
+BTree::Node* BTree::findMin(Node *node)
+{
+	Node* maxNode = node;
+	if(node == nullptr)
+	{
+		return nullptr;
+	}
+	while(node->m_left != nullptr)
+	{
+		node = node->m_left;
+	}
+	return node;
+}
 BTree::NodeList BTree::getDFS(Node* node) const
 {
 	BTree::NodeList nodeList;

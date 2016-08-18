@@ -18,6 +18,8 @@ int main(int argc, const char* argv[])
 	{
 		btree.Insert(v);
 	}
+	
+#if 0
 	BTree::NodeList dfs = btree.GetDFS();
 	for(const auto& n: dfs) printf("%d,", n->m_value);
 	printf("\n");
@@ -25,5 +27,12 @@ int main(int argc, const char* argv[])
 	for(const auto& n: bfs) printf("%d,", n->m_value);
 	printf("\n");
 	btree.Dump();
+#endif
+	btree.Dump();
+	for(const auto& v: vals)
+	{
+		btree.Delete(v);
+		btree.Dump();
+	}
 	return 0;
 }

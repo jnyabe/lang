@@ -33,6 +33,9 @@ public:
 private:
 	BTree::Node* m_root;
 	BTree::Node* find(int n);
+
+	BTree::Node* findMax(Node *node);
+	BTree::Node* findMin(Node *node);
 	
 	NodeList getDFS(Node* node) const;
 	
