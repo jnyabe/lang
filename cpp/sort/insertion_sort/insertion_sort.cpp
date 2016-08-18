@@ -5,7 +5,7 @@ std::string InsertionSort::GetName(void) const
 	return "InsertionSort";
 }
 
-int InsertionSort::Exec(Array &array)
+int InsertionSort::Sort(Array &array)
 {
 	// Best Time Complexity: O(N)
 	// Average Time Complexity: O(N^2)

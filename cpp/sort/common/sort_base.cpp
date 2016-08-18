@@ -1,10 +1,10 @@
-#include "sort.h"
+#include "sort_base.h"
 
-void Sort::Test(Array& array)
+void SortBase::Test(Array& array)
 {
 	array.Shuffle(m_seed);
 	printf("[%s]\n", GetName().c_str());
 	array.Print("[before]");
-	Exec(array);
+	Sort(array);
 	array.Print("[after]");
 }
