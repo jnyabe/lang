@@ -1,12 +1,6 @@
-#include "../common/array.h"
-#include <iostream>
+#include "heap_sort.h"
 
-static void sift_up()
-{
-	
-}
-
-static void sift_down(Array &array, int root, int bottom)
+int HeapSort::siftDown(Array &array, int root, int bottom)
 {
 	int done, maxChild, temp;
 	done = 0;
@@ -36,15 +30,16 @@ static void sift_down(Array &array, int root, int bottom)
 			done = 1;
 		}
 	}
+	return 0;
 }
 
-static void heap_sort(Array &array)
+int HeapSort::Sort(Array &array)
 {
 
 	// create heap with bottom-up
 	for(int i = (array.Size() - 1) / 2 ; i >=0; i--)
 	{
-		sift_down(array, i, array.Size());
+		siftDown(array, i, array.Size());
 		array.Print("[sift_down]");
 	}
 	
@@ -54,27 +49,8 @@ static void heap_sort(Array &array)
 	for(int i= array.Size() - 1; i> 0; i--)
 	{
 		array.Swap(0, i);
-		sift_down(array, 0, i-1);
+		siftDown(array, 0, i-1);
 		array.Print("[heap]");		
 	}
-}
-
-
-int main(int argc, const char* argv[])
-{
-
-	for(int i=1; i < argc; i++)
-	{
-		try {
-			Array array(std::stoi(argv[i]));
-			array.Shuffle(10);
-			array.Print("[before sort]");
-			heap_sort(array);
-			array.Print("[after sort]");
-		} catch(std::invalid_argument e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-
 	return 0;
 }

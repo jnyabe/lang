@@ -2,8 +2,8 @@ SRCS = $(wildcard *.cpp) $(wildcard ../common/*.cpp)
 OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
-BIN = hsort
-CPPFLAGS = -g -O2 -std=c++11
+BIN = heap_sort
+CPPFLAGS = -g -O2 -std=c++11 -I../common
 LDFLAGS = 
 
 all:$(BIN)
