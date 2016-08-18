@@ -1,7 +1,7 @@
-#include "../common/array.h"
-#include <iostream>
+#include "quick_sort.h"
 
-static void quick_sort(Array &array, int left, int right)
+
+int QuickSort::sort(Array &array, int left, int right)
 {
 	// Best Time Complexity: O(N)
 	// Average Time Complexity: O(N^2)
@@ -37,29 +37,16 @@ static void quick_sort(Array &array, int left, int right)
 	
 	array[left] = pivot;
 	pivot = left;
-	left = l_held;
+	left = l_hold;
 	right = r_hold;
 	if(left < pivot)
-		quick_sort(array, left, pivot-1);
+		sort(array, left, pivot-1);
 	if(right < pivot)
-		quick_sort(array, pivot+1, right);
+		sort(array, pivot+1, right);
 		
 }
 
-int main(int argc, const char* argv[])
+int QuickSort::Sort(Array &array)
 {
-	for(int i=1; i < argc; i++)
-	{
-		try {
-			Array array(std::stoi(argv[i]));
-			array.Shuffle(10);
-			array.Print("[before quick_sort]");
-			quick_sort(array, 0, array.Size() - 1);
-			array.Print("[after quick_sort]");
-		} catch(std::invalid_argument e) {
-			std::cout << e.what() << std::endl;
-		}
-	}
-
-	return 0;
+	return sort(array, 0, array.Size() -1);
 }
