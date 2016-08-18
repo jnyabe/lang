@@ -3,7 +3,7 @@ OBJS = $(SRCS:.cpp=.o)
 
 CC = clang++
 BIN = ins_sort
-CPPFLAGS = -g -O2 -std=c++11
+CPPFLAGS = -g -O2 -std=c++11 -I../common -frtti
 LDFLAGS = 
 
 all:$(BIN)
