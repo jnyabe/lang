@@ -12,18 +12,16 @@ public:
 		int   m_value;
 		Node* m_left;
 		Node* m_right;
-		Node* m_parent;		
-
+		
 		Node()
 			: m_value(0),
 			  m_left(nullptr),
-			  m_right(nullptr),
-			  m_parent(nullptr) {}		
+			  m_right(nullptr) {}
+			  
 		Node(int n)
 			: m_value(n),
 			  m_left(nullptr),
-			  m_right(nullptr) ,
-			  m_parent(nullptr) {}
+			  m_right(nullptr) 	{}
 		virtual ~Node();
 		void Print(void) const;
 	};
@@ -32,10 +30,14 @@ public:
 	
 private:
 	BTree::Node* m_root;
+	BTree::Node* insertNode(int n, Node* node);
+	BTree::Node* deleteNode(int n, Node* node);
 	BTree::Node* find(int n);
 
 	BTree::Node* findMax(Node *node);
 	BTree::Node* findMin(Node *node);
+	BTree::Node* deleteMax(Node *node);	
+	BTree::Node* deleteMin(Node *node);
 	
 	NodeList getDFS(Node* node) const;
 	
