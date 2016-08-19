@@ -6,8 +6,8 @@
 class MergeSort: public SortBase
 {
 private:
-	int MergeSort::sort(Array &array, int left, int right);
-	
+	int sort(Array &array, std::vector<int> temp, int left, int right);
+	int merge(Array &array, std::vector<int> temp, int left, int mid, int right);
 public:
 	MergeSort() {}
 	virtual ~MergeSort() {}
