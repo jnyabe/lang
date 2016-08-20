@@ -1,6 +1,0 @@
-include ../../.mk/makefile.def
-
-BIN = test_sort
-CXXFLAGS += -I../common 
-
-include ../../.mk/makefile.inc

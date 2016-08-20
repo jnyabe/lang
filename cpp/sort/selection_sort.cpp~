@@ -1,8 +1,0 @@
-##include "selection_sort.h"
-
-
-int SelectionSort::Sort(Array &array) const
-{
-
-	return 0;
-}
