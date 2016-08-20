@@ -1,6 +1,6 @@
 #include "bubble_sort.h"
 
-int BubbleSort::Sort(Array &array)
+int BubbleSort::Sort(Array &array) const
 {
 	// n * (n-1) / 2
 	for(int i=0; i < array.Size() - 1 ; i++)
