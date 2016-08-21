@@ -11,9 +11,9 @@ public:
 	ShellSort()
 	{
 		m_info[SORT_INFO_TYPE_NAME] = "Shell Sort";
-		m_info[SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY] = "O(?))";
-		m_info[SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY] = "O(?)";
-		m_info[SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY] = "O(?)";
+		m_info[SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY] = "O(N))";
+		m_info[SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY] = "O(N log N)";
+		m_info[SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY] = "O(N ^ 1.25)";
 	}
 	virtual ~ShellSort() {}
 	virtual int Sort(Array &array) const;

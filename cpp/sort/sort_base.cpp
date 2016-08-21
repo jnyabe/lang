@@ -35,15 +35,16 @@ void SortBase::Help(void) const
 {
 	const char* label[] =
 		{
-			"Name: ",
-			"Best Time Complexity",
-			"Worst Time Complexity",
-			"Average Time Complexity",
+			"[%s]\n",
+			"\tBest Time Complexity    : %s\n",
+			"\tWorst Time Complexity   : %s\n",
+			"\tAverage Time Complexity : %s\n",
+			"\tWorst Space Complexity  : %s\n",
 		};
 	
 	for(int i=0; i < SORT_INFO_TYPE_MAX; i++)
 	{
-		printf("%-25s: %s\n", label[i], m_info[i].c_str());
+		printf(label[i], m_info[i].c_str());
 	}
 }
 
@@ -54,7 +55,6 @@ int SortBase::Run(int argc, const char* argv[]) const
 		Help();
 		return 0;
 	}
-
 	try {
 		Array array(std::stoi(argv[1]));
 		Test(array);

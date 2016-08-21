@@ -23,7 +23,7 @@ int HeapSort::siftDown(Array &array, int root, int bottom) const
 		// maxChildは、より大きな値を持つ方の子
 
 		if(array[root] < array[maxChild]) {
-			printf("Swap %d and %d\n", array[root], array[maxChild]);
+			// printf("Swap %d and %d\n", array[root], array[maxChild]);
 			array.Swap(root, maxChild);
 			root = maxChild;
 		} else {
@@ -40,17 +40,17 @@ int HeapSort::Sort(Array &array) const
 	for(int i = (array.Size() - 1) / 2 ; i >=0; i--)
 	{
 		siftDown(array, i, array.Size());
-		array.Print("[sift_down]");
+		// array.Print("[sift_down]");
 	}
 	
-	array.Print("[afer sift_down]");
+	// array.Print("[afer sift_down]");
 
 	// heap sort
 	for(int i= array.Size() - 1; i> 0; i--)
 	{
 		array.Swap(0, i);
 		siftDown(array, 0, i-1);
-		array.Print("[heap]");		
+		// array.Print("[heap]");		
 	}
 	return 0;
 }

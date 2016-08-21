@@ -54,8 +54,6 @@ int MergeSort::merge(Array &array, std::vector<int> temp, int left, int mid, int
 	}
 	//	printf("\n");
 
-
-	
 	return 0;
 }
 

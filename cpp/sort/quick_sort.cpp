@@ -9,7 +9,7 @@ int QuickSort::sort0(Array &array, int left, int right) const
 	r_hold = right;
 	pivot = array[left];
 
-	printf("sort(%d-%d)\n", left, right);
+	//	printf("sort(%d-%d)\n", left, right);
 	// 0. |p|.................|.|
 	//     l                   r
 	// 1. |p|...........|S|bbbbb|
@@ -66,7 +66,7 @@ int QuickSort::sort1(Array &array, int left, int right) const
 	
 	/// @note Nico Lomuto method
 	int m = left;
-	printf("sort(%d-%d)\n", left, right);	
+	//	printf("sort(%d-%d)\n", left, right);	
 	for(int i= left + 1; i <= right; i++)
 	{
 		if(array[i] < array[left])
@@ -91,7 +91,7 @@ int QuickSort::sort2(Array &array, int left, int right) const
 	
 	/// @note Bob Sedgewick method 
 	int m = right + 1;
-	printf("sort(%d-%d)\n", left, right);
+	///	printf("sort(%d-%d)\n", left, right);
 	
 	for(int i= right; i >= left; i--)
 	{

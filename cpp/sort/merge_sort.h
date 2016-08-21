@@ -15,6 +15,7 @@ public:
 		m_info[SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY] = "O(N Log(N))";
 		m_info[SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY] = "O(N Log(N))";
 		m_info[SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY] = "O(N Log(N))";
+		m_info[SORT_INFO_TYPE_WORST_SPACE_COMPLEXITTY] = "O(N)";
 	}
 	virtual ~MergeSort() {}
 

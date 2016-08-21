@@ -8,7 +8,7 @@ int InsertionSort::Sort(Array &array) const
 		for(int j=i; j > 0 && array[j-1] >  array[j]; j--)
 		{
 			array.Swap(j-1, j);
-			array.Print("insert");
+			//			array.Print("insert");
 		}
 	}
 	return 0;

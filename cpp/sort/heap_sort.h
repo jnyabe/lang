@@ -7,10 +7,15 @@ class HeapSort: public SortBase
 {
 private:
 	int siftDown(Array &array, int root, int bottom) const;
+	
 public:
 	HeapSort()
 	{
-		
+		m_info[SORT_INFO_TYPE_NAME] = "Heap Sort";
+		m_info[SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY]    = "O(N Log(N))";
+		m_info[SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY]   = "O(N Log(N))";
+		m_info[SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY] = "O(N Log(N))";
+		m_info[SORT_INFO_TYPE_WORST_SPACE_COMPLEXITTY]  = "O(1)";
 	}
 	virtual ~HeapSort() {}
 	virtual int Sort(Array &array) const;

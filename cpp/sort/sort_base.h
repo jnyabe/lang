@@ -16,6 +16,7 @@ protected:
 		SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY,
 		SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY,
 		SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY,
+		SORT_INFO_TYPE_WORST_SPACE_COMPLEXITTY,
 		SORT_INFO_TYPE_MAX,
 	};
 	std::string m_info[SORT_INFO_TYPE_MAX];
@@ -53,6 +54,7 @@ public:
 
 	/// @brief show brief descrption of the sort alogirhm
 	void Help(void) const;
+
 };
 
 #endif /* _SORT_BASE_H_ */

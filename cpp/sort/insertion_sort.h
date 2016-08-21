@@ -12,6 +12,7 @@ public:
 		m_info[SORT_INFO_TYPE_BEST_TIME_COMPLEXITTY] = "O(N)";
 		m_info[SORT_INFO_TYPE_WORST_TIME_COMPLEXITTY] = "O(N^2)";
 		m_info[SORT_INFO_TYPE_AVERAGE_TIME_COMPLEXITTY] = "O(N^2)";
+		m_info[SORT_INFO_TYPE_WORST_SPACE_COMPLEXITTY] = "O(1)";		
 	}
 	virtual ~InsertionSort() {}
 	virtual int Sort(Array& array) const;

@@ -3,6 +3,6 @@
 
 int ShellSort::Sort(Array &array) const
 {
-
+	
 	return 0;
 }

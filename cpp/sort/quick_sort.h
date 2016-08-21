@@ -59,8 +59,8 @@ public:
 		const char* type[] =
 			{
 				"?",
-				"Lomuto",
-				"Sedgewick",
+				"(Lomuto)",
+				"(Sedgewick)",
 				"?"
 			};
 		m_type = AlgorithmType_Sedgewick;
