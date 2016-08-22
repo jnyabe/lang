@@ -16,18 +16,13 @@ int main(int argc, const char* argv[])
 	std::list<std::shared_ptr<SortBase>> sorts;
 	
 	// sorts.push_back(std::make_shared<BubbleSort>());
-	sorts.push_back(std::make_shared<SelectionSort>());
-	
-	sorts.push_back(std::make_shared<InsertionSort>());
-	
-	sorts.push_back(std::make_shared<MergeSort>());
-	sorts.push_back(std::make_shared<QuickSort>());
-	sorts.push_back(std::make_shared<HeapSort>());
-
-	sorts.push_back(std::make_shared<RadixSort>());
-	sorts.push_back(std::make_shared<ShellSort>());
-	
-	
+	// sorts.push_back(std::make_shared<SelectionSort>());
+	// sorts.push_back(std::make_shared<InsertionSort>());
+	// sorts.push_back(std::make_shared<MergeSort>());
+	// sorts.push_back(std::make_shared<QuickSort>());
+	// sorts.push_back(std::make_shared<HeapSort>());
+	// sorts.push_back(std::make_shared<RadixSort>());
+	sorts.push_back(std::make_shared<ShellSort>());	
 	for(auto& sort: sorts)
 	{
 		sort->Run(argc, argv);
