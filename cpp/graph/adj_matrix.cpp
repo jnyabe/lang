@@ -1,41 +1,86 @@
 #include "adj_matrix.h"
 
-AdjMatrix::AdjMatrix(int col, int row)
-	: m_column(col), m_row(row), m_matrix(col * row)
+AdjMatrix::AdjMatrix(int num_vertex)
+	: m_num_vertex(num_vertex)
 {
-	for(int i=0; i < col * row; i++)
-	{
-		m_matrix[i] = 0;
-	}
+	m_matrix.resize(m_num_vertex * m_num_vertex, 0);
 }
 
-int AdjMatrix::Set(int col, int row, int value)
+int AdjMatrix::AddVertex(const Vertex &v)
 {
-	if(0 <= col && col < m_column && 0<= row && row < m_row)
+	if(v.m_id > m_num_vertex)
 	{
-		m_matrix[col + row * m_column] = value;
-		return 0;
+		int num_vertex = v.m_id;
+
+		std::vector<int> tmp(num_vertex * num_vertex, 0);
+		for(int i=0; i < m_num_vertex; i++)
+		{
+			for(int j=0; j < m_num_vertex; j++)
+			{
+				tmp[i* num_vertex + j] = m_matrix[i * m_num_vertex + j];
+			}
+		}
+		m_matrix.resize(num_vertex * num_vertex);
+		for(int i=0; i < num_vertex * num_vertex; i++)
+			m_matrix[i] = tmp[i];
+		m_num_vertex = num_vertex;
 	}
-	return -1;
+	return 0;
 }
 
-int AdjMatrix::Get(int col, int row) const
+int AdjMatrix::RemoveVertex(const Vertex &v)
 {
-	if(0 <= col && col < m_column && 0<= row && row < m_row)
+	for(int i=0; i < m_num_vertex; i++)
 	{
-		return m_matrix[col + row * m_column];
+		// clean edge to/from the denoted vertex
+		m_matrix[m_num_vertex * i + v.m_id - 1] = 0;
+		m_matrix[(v.m_id - 1) * m_num_vertex + i] = 0;	
 	}
-	return -1;
+	return 0;
+}
+
+int AdjMatrix::AddEdge(const Vertex& from, const Vertex& to, int cost)
+{
+	int ret = 0;
+	
+	if(m_num_vertex < from.m_id)
+	{
+		ret = AddVertex(from);
+	}
+	if(m_num_vertex < to.m_id)
+	{
+		ret = AddVertex(to);
+	}
+
+	m_matrix[(from.m_id-1) * m_num_vertex + (to.m_id - 1)] = cost;
+	m_matrix[(to.m_id-1) * m_num_vertex + (from.m_id - 1)] = cost;
+	
+	return ret;
+}
+
+int AdjMatrix::RemoveEdge(const Vertex& from, const Vertex& to)
+{
+	m_matrix[(from.m_id-1) * m_num_vertex + (to.m_id - 1)] = 0;
+	m_matrix[(to.m_id-1) * m_num_vertex + (from.m_id - 1)] = 0;
+	return 0;
+}
+
+
+void AdjMatrix::Clear(void)
+{
+	m_num_vertex = 0;
+	m_matrix.clear();
 }
 
 void AdjMatrix::Dump() const
 {
-	for(int i=0; i < m_row; i++)
+	printf("# of vertex: %d\n", m_num_vertex);
+	for(int i=0; i < m_num_vertex; i++)
 	{
-		for(int j=0; j < m_column; j++)
+		for(int j=0; j < m_num_vertex; j++)
 		{
-			printf("%d%c", m_matrix[j + i * m_column],
-				   (j == m_column - 1)? '\n':',');
+			printf("%d%c", m_matrix[j + i * m_num_vertex],
+				   (j == m_num_vertex - 1)? '\n':',');
 		}
 	}
 }

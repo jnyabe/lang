@@ -8,14 +8,22 @@
 class AdjList: public Graph
 {
 private:
+	struct Edge
+	{
+		Vertex m_to;
+		int    m_cost;
+	};
+	
 	class VertexInfo
 	{
 	public:
 		Vertex            m_vertex;
-		std::list<Vertex> m_edges;
+		std::list<Edge>   m_edges;
 	};
 	
 	std::list<VertexInfo> m_vinfoList;
+
+	bool hasVertex(const Vertex &v) const;
 public:
 	AdjList() {};
 	virtual ~AdjList() {};
@@ -31,13 +39,16 @@ public:
 	/// @brief Add an edge 
 	/// @param[in] from edge from
 	/// @param[in] to   edge to
-	virtual int AddEdge(const Vertex& from, const Vertex& to);
+	/// @param[in] cost 
+	virtual int AddEdge(const Vertex& from, const Vertex& to, int cost = 1);
 
 	/// @brief Remove an edge 
 	/// @param[in] from edge from
 	/// @param[in] to   edge to
 	virtual int RemoveEdge(const Vertex& from, const Vertex& to);
 
+	virtual void Clear(void);
+	
 	virtual void Dump(void) const;
 };
 

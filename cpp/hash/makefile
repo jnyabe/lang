@@ -1,5 +1,5 @@
 include ../.mk/makefile.def
 
-BIN = test_str
+BIN = test_hash
 
 include ../.mk/makefile.inc
