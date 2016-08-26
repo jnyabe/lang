@@ -19,7 +19,7 @@ protected:
 		SS_INFO_TYPE_MAX,
 	};
 	std::string m_info[SS_INFO_TYPE_MAX];
-	
+
 public:
 	/// @Brief Default constructor
 	SSBase():m_seed(10) {}
@@ -27,6 +27,13 @@ public:
 	/// @Brief Destructor
 	virtual ~SSBase() {}
 
+	/// @brief Search 'pattern' string in 'text' string
+	/// @param[in] text string to be searched from
+	/// @param[in] pattern string to be searched
+	/// @retval index of pattern (if found)
+	/// @retval -1 (if not found)
+	virtual int Search(const char* text, const char* pattern) const = 0;
+	
 	/// @brief Run string search demo
 	/// @param[in,out] array to be sorted
 	/// @retval 0 Success

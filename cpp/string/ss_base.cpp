@@ -3,19 +3,23 @@
 
 int SSBase::Run(int argc, const char* argv[]) const
 {
+	int ret = 0;
+	const char text[] = "ABC ABCDAB ABCDABCDABDE";
+	const char pattern[] = "ABCDABD";
+#if 0	
 	if(argc <= 1)
 	{
 		Help();
 		return 0;
 	}
+#endif	
+	ret = Search(text, pattern);
 	
-	try {
-		
-		
-	} catch(std::invalid_argument e) {
-		std::cout << e.what() << std::endl;
-	}
-	return 0;
+	printf("[%-25s] %s '%s'(%d)\n",
+		   m_info[SS_INFO_TYPE_NAME].c_str(),
+		   (ret >= 0)? "Found":"Not Found", pattern, ret);
+
+	return ret;
 }
 
 void SSBase::Help(void) const

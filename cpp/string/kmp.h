@@ -3,6 +3,7 @@
 
 #include "ss_base.h"
 
+/// @brief Knuth–Morris–Pratt algorithm
 class Kmp: public SSBase
 {
 	
@@ -20,6 +21,7 @@ public:
 	/// @Brief Destructor
 	virtual ~Kmp() {}
 
+	virtual int Search(const char* text, const char* pattern) const;
 };
 
 #endif /* _KMP_H_ */

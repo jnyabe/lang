@@ -20,6 +20,7 @@ public:
 	/// @Brief Destructor
 	virtual ~AhoCorasick() {}
 
+	virtual int Search(const char* text, const char* pattern) const;
 };
 
 #endif /* _AHO_CORASICK_H_ */
