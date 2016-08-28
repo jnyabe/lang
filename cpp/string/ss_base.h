@@ -2,12 +2,10 @@
 #define _SS_BASE_H_
 
 #include <string>
-
+#include <vector>
 class SSBase
 {
-private:
-	int m_seed; // random seed
-	
+
 protected:
 	
 	enum SSInfoType {
@@ -19,10 +17,11 @@ protected:
 		SS_INFO_TYPE_MAX,
 	};
 	std::string m_info[SS_INFO_TYPE_MAX];
-
+	int  m_num_comparison;
+	bool m_debug;
 public:
 	/// @Brief Default constructor
-	SSBase():m_seed(10) {}
+	SSBase(): m_num_comparison(0), m_debug(false) {}
 
 	/// @Brief Destructor
 	virtual ~SSBase() {}
@@ -32,13 +31,32 @@ public:
 	/// @param[in] pattern string to be searched
 	/// @retval index of pattern (if found)
 	/// @retval -1 (if not found)
-	virtual int Search(const char* text, const char* pattern) const = 0;
+	virtual int Search(const std::string& text, const std::string &pattern) = 0;
+
+	/// @brief Search multiple 'pattern's string in 'text' string
+	/// @param[in] text string to be searched from
+	/// @param[in] patterns a list of string to be searched
+	/// @retval index of pattern (if found)
+	/// @retval -1 (if not found)
+	virtual int Search(const std::string& text
+					   , const std::vector<std::string> &pattern) = 0;
+
+	/// @brief Compare m th. letter of 'pattern' and i th. letter of 'text'
+	/// @param[in] text string to be searched from
+	/// @param[in] m index of letter to be compared in text
+	/// @param[in] pattern string to be searched
+	/// @param[in] i index of letter to be compared in pattern	
+	/// @retval true Equal
+	/// @retval false Not Equal
+	bool IsEqual(const std::string& text, int m,
+				 const std::string &pattern, int i);
 	
 	/// @brief Run string search demo
 	/// @param[in,out] array to be sorted
 	/// @retval 0 Success
 	/// @retval Nagative number Error
-	int Run(int argc, const char* argv[]) const;
+	int Run(const char* text, const char* pattern);
+
 
 	/// @brief show brief descrption of the string search alogirhm
 	void Help(void) const;

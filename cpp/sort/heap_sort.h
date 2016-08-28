@@ -7,7 +7,8 @@ class HeapSort: public SortBase
 {
 private:
 	int siftDown(Array &array, int root, int bottom) const;
-	
+	int siftDown(Array &array, int n) const;
+	int siftUp(Array &array, int n) const;
 public:
 	HeapSort()
 	{

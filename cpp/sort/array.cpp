@@ -16,6 +16,12 @@ Array::Array(int size)
 	std::iota(m_array.begin(), m_array.end(), 0);
 }
 
+Array::Array(const Array& array)
+	: m_array(array.m_array.size())
+{
+	std::copy(array.m_array.begin(), array.m_array.end(), back_inserter(this->m_array));
+}
+
 Array::~Array()
 {
 	
@@ -48,4 +54,11 @@ void Array::Print(std::string label) const
 	std::copy(m_array.begin(), m_array.end(),
 			  std::ostream_iterator<int>(std::cout, ","));
 	std::cout << std::endl; 	
+}
+
+Array& Array::operator=(const Array& array)
+{
+	this->m_array.clear();
+	std::copy(array.m_array.begin(), array.m_array.end(), back_inserter(this->m_array));
+	return *this;
 }

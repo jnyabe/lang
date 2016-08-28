@@ -1,17 +1,16 @@
 #include "brute_force.h"
 
-int BruteForceSearch::Search(const char* text, const char* pattern) const
+int BruteForceSearch::Search(const std::string& text, const std::string &pattern)
 {
 	int idx = -1;
-	int tlen = strlen(text);
-	int plen = strlen(pattern);
-
-	for(int i=0; i < tlen - plen; i++)
+	
+	for(int i=0; i < text.size() - pattern.size(); i++)
 	{
 		bool match = true;
-		for(int j=0; j < plen; j++)
+		for(int j=0; j < pattern.size(); j++)
 		{
-			if(text[i+j] != pattern[j])
+			
+			if(!IsEqual(text, i + j, pattern, j))
 			{
 				match = false;
 				break;
@@ -24,5 +23,12 @@ int BruteForceSearch::Search(const char* text, const char* pattern) const
 		}
 	}
 			
+	return idx;
+}
+
+int BruteForceSearch::Search(const std::string& text
+							 , const std::vector<std::string> &pattern)
+{
+	int idx = -1;
 	return idx;
 }

@@ -5,6 +5,10 @@
 
 class InsertionSort: public SortBase
 {
+private:
+	void sort1(Array& array) const;
+	void sort2(Array& array) const;
+	void sort3(Array& array) const;
 public:
 	InsertionSort()
 	{

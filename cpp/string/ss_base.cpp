@@ -1,23 +1,29 @@
 #include <iostream>
 #include "ss_base.h"
 
-int SSBase::Run(int argc, const char* argv[]) const
+bool SSBase::IsEqual(const std::string& text, int m,
+					 const std::string &pattern, int i)
+{
+	if(m_debug)
+	{
+		printf("\tCompare text:%c(%d), pattern:%c(%d)\n",
+			   text[m], m, pattern[i], i);
+	}
+	m_num_comparison++;
+	return (text[m] == pattern[i]);
+}
+
+int SSBase::Run(const char* text, const char* pattern)
 {
 	int ret = 0;
-	const char text[] = "ABC ABCDAB ABCDABCDABDE";
-	const char pattern[] = "ABCDABD";
-#if 0	
-	if(argc <= 1)
-	{
-		Help();
-		return 0;
-	}
-#endif	
+
+
+	m_num_comparison = 0;
 	ret = Search(text, pattern);
 	
-	printf("[%-25s] %s '%s'(%d)\n",
+	printf("[%-25s] %s '%s'(%d): # of comp: %d\n",
 		   m_info[SS_INFO_TYPE_NAME].c_str(),
-		   (ret >= 0)? "Found":"Not Found", pattern, ret);
+		   (ret >= 0)? "Found":"Not Found", pattern, ret, m_num_comparison);
 
 	return ret;
 }

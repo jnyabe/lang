@@ -1,5 +1,53 @@
 #include "heap_sort.h"
 
+int HeapSort::siftUp(Array &array, int n) const
+{
+	int ret =0;
+	int i = n;
+	// 0 -> 1,2 -> 1->3,4  2->5,6
+	// a -> 2*a + 1, 2*a + 2
+	for(;;)
+	{
+		if(i==0) break; // reach root
+		int p = (i - 1) / 2; // parent
+		
+		if(array[p] <= array[i]) break;
+		array.Swap(p, i);
+		i = p;
+	}
+	return ret;
+}
+
+int HeapSort::siftDown(Array &array, int n) const
+{
+	int ret = 0;
+	int i = 0; // root
+
+	for(;;)
+	{
+		int c = 2 * i + 1;
+		if(c > n)
+		{
+			break;  // no child
+		}
+		
+		if(c + 1 <= n)
+		{
+			// two chilren
+			if(array[c + 1] < array[c])
+			{
+				c++;
+			}
+		}
+
+		if(array[c] <= array[i]) break;
+		array.Swap(c, i);
+		i = c;
+	}
+	
+	return ret;
+}
+
 int HeapSort::siftDown(Array &array, int root, int bottom) const
 {
 	int done, maxChild, temp;

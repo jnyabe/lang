@@ -1,7 +1,6 @@
 #include <assert.h>
 #include "quick_sort.h"
 
-
 int QuickSort::sort0(Array &array, int left, int right) const
 {
 	int pivot, l_hold, r_hold;
@@ -63,6 +62,7 @@ int QuickSort::sort1(Array &array, int left, int right) const
 		// do nothing if less than 1 elements
 		return 0;
 	}
+
 	
 	/// @note Nico Lomuto method
 	int m = left;
@@ -74,7 +74,10 @@ int QuickSort::sort1(Array &array, int left, int right) const
 			array.Swap(++m, i);
 		}
 	}
-	array.Swap(left, m);
+
+	// @note without this swap, infinite-loop may occurs
+	// if m is maximum number... 
+	array.Swap(left, m); 
 	
 	sort1(array, left, m - 1);
 	sort1(array, m + 1,right);

@@ -10,7 +10,6 @@ int MergeSort::sort(Array &array, std::vector<int> temp, int left, int right) co
 		// do nothing, if only 1 elements
 	} else {
 		int mid = left + (right - left) / 2;
-
 		// printf("sort(%d, %d)->sort(%d,%d) + sort(%d, %d)\n", left, right, left, mid, mid+1, right);
 		sort(array, temp, left, mid);
 		sort(array, temp, mid + 1, right);
