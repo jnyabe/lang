@@ -1,21 +1,22 @@
-#ifndef __DEQUE_H__
-#define __DEQUE_H__
+#ifndef __FORWARD_LIST_H__
+#define __FORWARD_LIST_H__
 
-#include <queue>
-#include "container.h"
+#include <forward_list>
+#include "sequence_container.h"
 
-class Deque: public Container
+class ForwardList: public SequenceContainer
 {
 private:
-	std::deque<DataType> m_deq;
+	std::forward_list<DataType> m_list;
+
 public:
-	Deque() {}
+	ForwardList() {}
 
-	Deque(int n): m_deq(n){}
+	ForwardList(int num):m_list(num) {}
 
-	virtual ~Deque() {}
+	virtual ~ForwardList() {}
 
-	virtual int Size() const { return m_deq.size();}
+	virtual int Size() const { return std::distance(m_list.begin(), m_list.end());}
 	// random acccess
 	virtual DataType Get(int n) const;
 
@@ -42,4 +43,4 @@ public:
 	virtual void Dump(void) const;
 };
 
-#endif /* __DEQUE_H__ */
+#endif /* __FORWARD_LIST_H__ */

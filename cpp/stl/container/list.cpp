@@ -1,20 +1,6 @@
 #include "List.h"
 
-std::list<Container::DataType>::iterator& List::getNth(int n)
-{
-	int i=0;
-	auto itr = m_list.begin();
-	for(; itr != m_list.end(); ++itr)
-	{
-		if(i==n)
-		{
-			break;
-		}
-		i++;
-	}
-	return itr;
-}
-Container::DataType List::Get(int n) const
+SequenceContainer::DataType List::Get(int n) const
 {
 	int i=0;
 	for(auto itr = m_list.begin(); itr != m_list.end(); ++itr)
@@ -28,7 +14,7 @@ Container::DataType List::Get(int n) const
 	return 0;
 }
 
-Container::DataType& List::operator[](int n)
+SequenceContainer::DataType& List::operator[](int n)
 {
 	int i=0;
 	auto itr = m_list.begin();
@@ -43,28 +29,33 @@ Container::DataType& List::operator[](int n)
 	return *itr;
 }
 
-Container::DataType List::Front(void) const
+SequenceContainer::DataType List::Front(void) const
 {
 	return m_list.front();
 }
 
-Container::DataType List::Back(void) const
+SequenceContainer::DataType List::Back(void) const
 {
 	return m_list.back();
 }
 
-void List::PushBack(Container::DataType n)
+void List::PushBack(SequenceContainer::DataType n)
 {
 	m_list.push_back(n);
 }
-void List::PushFront(Container::DataType n)
+void List::PushFront(SequenceContainer::DataType n)
 {
 	m_list.push_front(n);
 }
 
-void List::Insert(int idx, Container::DataType n)
+void List::Insert(int idx, SequenceContainer::DataType n)
 {
-	m_list.insert(m_list.begin() + idx, n);
+	auto itr = m_list.begin();
+	for(int i=0; i < idx && itr != m_list.end(); i++)
+	{
+		++itr;
+	}
+	m_list.insert(itr, n);
 }
 
 
@@ -81,7 +72,15 @@ void List::PopFront(void)
 
 void List::Delete(int idx)
 {
-	m_list.erase(m_list.begin() + idx);
+	auto itr = m_list.begin();
+	for(int i=0; i < idx && itr != m_list.end() ; i++)
+	{
+		++itr;
+	}
+	if(itr != m_list.end())
+	{
+		m_list.erase(itr);
+	}
 }
 
 

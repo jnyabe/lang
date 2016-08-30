@@ -1,43 +1,50 @@
-
 #include <string>
 
 // sequence container
-#include "Array.h"
-#include "Vector.h"
-#include "Deque.h"
-
 #include <list>
-#include <forward_list> // C++11
+#include "array.h"
+#include "vector.h"
+#include "deque.h"
+#include "list.h"
+#include "forward_list.h"
 
-
-#include <map>
 #include <set>
+#include <map>
+
+
+// container adapter
+#include <stack>
+#include <queue>
+
+
+
 //#include <multiset>
 
-#include <queue>
+
 //#include <priority_queue>
-#include <stack>
+
 
 using namespace std;
 
 
 int main(int argc, const char* argv[])
 {
-	typedef int DataType;
 	const int num = 20;
+	std::list<std::shared_ptr<SequenceContainer>> container;
 
 	// Sequence container
-	Vector vec(num);
-	Array  ary(20);
-	Deque  deq(num);
-	// vector<DataType>         vec(num, 0);
+	container.push_back(std::make_shared<Vector>(num));
+	container.push_back(std::make_shared<Array>(num)); // C++11
+	container.push_back(std::make_shared<Deque>(num));
+	container.push_back(std::make_shared<List>(num));
+	container.push_back(std::make_shared<ForwardList>(num)); // C++11
 
-	list<DataType>           lis(num);
-	forward_list<DataType>   fwl(num);
+	for(auto c: container)
+	{
+		for(int i=0; i< num; i++)
+			(*c)[i] = i;
+		c->Dump();
+	}
 
-	vec.Dump();
-	ary.Dump();
-	deq.Dump();
-	
 	return 0;
 }

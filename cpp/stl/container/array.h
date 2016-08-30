@@ -1,21 +1,21 @@
-#ifndef __LIST_H__
-#define __LIST_H__
+#ifndef __ARRAY_H__
+#define __ARRAY_H__
 
-#include <list>
-#include "container.h"
+#include <array>
+#include "sequence_container.h"
 
-class List: public Container
+class Array: public SequenceContainer
 {
 private:
-	std::list<DataType> m_list;
-
-	std::list<DataType>::iterator & getNth(int n);
+	std::array<DataType, 20> m_array;
 public:
-	List() {}
+	Array() {}
 
-	virtual ~List() {}
+	Array(int n): m_array(){}
 
-	virtual int Size() const { return m_list.size();}
+	virtual ~Array() {}
+
+	virtual int Size() const { return m_array.size();}
 	// random acccess
 	virtual DataType Get(int n) const;
 
@@ -42,4 +42,4 @@ public:
 	virtual void Dump(void) const;
 };
 
-#endif /* __LIST_H__ */
+#endif /* __ARRAY_H__ */

@@ -2,36 +2,36 @@
 #include "array.h"
 
 
-Container::DataType Array::Get(int n) const
+SequenceContainer::DataType Array::Get(int n) const
 {
 	return m_array[n];
 }
 
-Container::DataType& Array::operator[](int n)
+SequenceContainer::DataType& Array::operator[](int n)
 {
 	return m_array[n];
 }
 
-Container::DataType Array::Front(void) const
+SequenceContainer::DataType Array::Front(void) const
 {
 	return m_array.front();
 }
 
-Container::DataType Array::Back(void) const
+SequenceContainer::DataType Array::Back(void) const
 {
 	return m_array.back();
 }
 
-void Array::PushBack(Container::DataType n)
+void Array::PushBack(SequenceContainer::DataType n)
 {
 	// m_array.push_back(n);
 }
-void Array::PushFront(Container::DataType n)
+void Array::PushFront(SequenceContainer::DataType n)
 {
 	// m_array.insert(m_array.begin(), n);
 }
 
-void Array::Insert(int idx, Container::DataType n)
+void Array::Insert(int idx, SequenceContainer::DataType n)
 {
 	// m_array.insert(m_array.begin() + idx, n);
 }

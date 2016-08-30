@@ -1,15 +1,28 @@
 #ifndef __CONTAINER_H__
 #define __CONTAINER_H__
 
-class Container
+#include <chrono>
+#include <string>
+
+class SequenceContainer
 {
-private:
+protected:
+	struct ElapsedTime
+	{
+		std::chrono::system_clock::time_point start;
+		std::chrono::system_clock::time_point end;
+	};
+
+	void start(ElapsedTime& etime) const;
+	void end(ElapsedTime& etime) const;
+	std::string format(const ElapsedTime& etime) const;
 	
 public:
 	typedef int DataType;
-	Container() {}
 	
-	virtual ~Container() {}
+	SequenceContainer(){}
+	
+	virtual ~SequenceContainer() {}
 
 	virtual int Size() const = 0;
 	// random acccess

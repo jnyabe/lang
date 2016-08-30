@@ -2,36 +2,36 @@
 #include "Deque.h"
 
 
-Container::DataType Deque::Get(int n) const
+SequenceContainer::DataType Deque::Get(int n) const
 {
 	return m_deq[n];
 }
 
-Container::DataType& Deque::operator[](int n)
+SequenceContainer::DataType& Deque::operator[](int n)
 {
 	return m_deq[n];
 }
 
-Container::DataType Deque::Front(void) const
+SequenceContainer::DataType Deque::Front(void) const
 {
 	return m_deq.front();
 }
 
-Container::DataType Deque::Back(void) const
+SequenceContainer::DataType Deque::Back(void) const
 {
 	return m_deq.back();
 }
 
-void Deque::PushBack(Container::DataType n)
+void Deque::PushBack(SequenceContainer::DataType n)
 {
 	m_deq.push_back(n);
 }
-void Deque::PushFront(Container::DataType n)
+void Deque::PushFront(SequenceContainer::DataType n)
 {
 	m_deq.insert(m_deq.begin(), n);
 }
 
-void Deque::Insert(int idx, Container::DataType n)
+void Deque::Insert(int idx, SequenceContainer::DataType n)
 {
 	m_deq.insert(m_deq.begin() + idx, n);
 }

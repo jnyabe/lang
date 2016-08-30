@@ -1,21 +1,22 @@
-#ifndef __VECTOR_H__
-#define __VECTOR_H__
+#ifndef __LIST_H__
+#define __LIST_H__
 
-#include <vector>
-#include "container.h"
+#include <list>
+#include "sequence_container.h"
 
-class Vector: public Container
+class List: public SequenceContainer
 {
 private:
-	std::vector<DataType> m_vec;
+	std::list<DataType> m_list;
+
 public:
-	Vector() {}
+	List() {}
 
-	Vector(int n): m_vec(n){}
+	List(int num):m_list(num) {}
 
-	virtual ~Vector() {}
+	virtual ~List() {}
 
-	virtual int Size() const { return m_vec.size();}
+	virtual int Size() const { return m_list.size();}
 	// random acccess
 	virtual DataType Get(int n) const;
 
@@ -42,4 +43,4 @@ public:
 	virtual void Dump(void) const;
 };
 
-#endif /* __VECTOR_H__ */
+#endif /* __LIST_H__ */

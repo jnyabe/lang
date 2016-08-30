@@ -1,21 +1,21 @@
-#ifndef __ARRAY_H__
-#define __ARRAY_H__
+#ifndef __DEQUE_H__
+#define __DEQUE_H__
 
-#include <array>
-#include "container.h"
+#include <queue>
+#include "sequence_container.h"
 
-class Array: public Container
+class Deque: public SequenceContainer
 {
 private:
-	std::array<DataType, 10> m_array;
+	std::deque<DataType> m_deq;
 public:
-	Array() {}
+	Deque() {}
 
-	Array(int n): m_array(){}
+	Deque(int n): m_deq(n){}
 
-	virtual ~Array() {}
+	virtual ~Deque() {}
 
-	virtual int Size() const { return m_array.size();}
+	virtual int Size() const { return m_deq.size();}
 	// random acccess
 	virtual DataType Get(int n) const;
 
@@ -42,4 +42,4 @@ public:
 	virtual void Dump(void) const;
 };
 
-#endif /* __ARRAY_H__ */
+#endif /* __DEQUE_H__ */
