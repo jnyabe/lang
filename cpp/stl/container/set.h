@@ -7,7 +7,7 @@
 class Set: public Container
 {
 private:
-	std::set<DataType> m_set;
+	std::set<DataKey> m_set;
 
 public:
 	Set() {}
@@ -16,30 +16,15 @@ public:
 
 	virtual int Size() const { return m_set.size();}
 
-	// random acccess
-	virtual DataType Get(int n) const;
 
-	virtual DataType& operator[](int n);
-	
-	// acccess head and tail
-	virtual DataType Front(void) const;
-	virtual DataType Back(void) const;
+	virtual void Insert(const DataKey &key, const DataValue &value);
 
-	// insert head and tail
-	virtual void PushBack(DataType n);
-	virtual void PushFront(DataType n);
-
-	// insert any point
-	virtual void Insert(int idx, DataType n);
-
-	// delete head and tail
-	virtual void PopBack(void);
-	virtual void PopFront(void);
-
-	// delete any poinrt
-	virtual void Delete(int idx);
+	// erase any poinrt
+	virtual void Erase(const DataKey &key);
 
 	virtual void Dump(void) const;
+
+
 };
 
 #endif /* __SET_H__ */

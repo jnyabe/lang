@@ -1,5 +1,5 @@
-#ifndef __CONTAINER_H__
-#define __CONTAINER_H__
+#ifndef __SEQUENCE_CONTAINER_H__
+#define __SEQUENCE_CONTAINER_H__
 
 #include <chrono>
 #include <string>
@@ -51,4 +51,4 @@ public:
 	virtual void Dump(void) const = 0;
 };
 
-#endif /* __CONTAINER_H__ */
+#endif /* __SEQUENCE_CONTAINER_H__ */
