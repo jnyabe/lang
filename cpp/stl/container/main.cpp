@@ -10,17 +10,13 @@
 
 #include "set.h"
 #include "map.h"
-
+#include "multimap.h"
+#include "unordered_map.h"
+#include "unordered_multimap.h"
 
 // container adapter
 #include <stack>
 #include <queue>
-
-
-
-//#include <multiset>
-
-
 //#include <priority_queue>
 
 
@@ -47,18 +43,28 @@ int main(int argc, const char* argv[])
 		c->Dump();
 	}
 
-	
 	container.push_back(std::make_shared<Set>());
 	container.push_back(std::make_shared<Map>());
-	
-	// Set
-	Set s;
-	for(int i=0; i < num; i++)
+	container.push_back(std::make_shared<MultiMap>());
+	container.push_back(std::make_shared<UnorderedMap>());
+	container.push_back(std::make_shared<UnorderedMultiMap>());		
+
+	for(auto c: container)
 	{
-		s.Insert(i, "");
+
+		for(int i=0; i< num; i++)
+		{
+			char value[32];
+			snprintf(value, sizeof(value), "v%02d", i);
+			(*c).Insert(i, value);
+		}
+		c->Dump();
+		for(int i=0; i< num; i+=2)
+		{
+			(*c).Erase(i);
+		}
+		c->Dump();
 	}
-	
-	s.Dump();
-	// Map
+
 	return 0;
 }

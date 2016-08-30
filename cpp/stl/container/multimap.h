@@ -1,18 +1,18 @@
-#ifndef __MAP_H__
-#define __MAP_H__
+#ifndef __MULTIMAP_H__
+#define __MULTIMAP_H__
 
 #include <map>
 #include "container.h"
 
-class Map: public Container
+class MultiMap: public Container
 {
 private:
-	std::map<DataKey, DataValue> m_map;
+	std::multimap<DataKey, DataValue> m_map;
 	
 public:
-	Map() {}
+	MultiMap() {}
 
-	virtual ~Map() {}
+	virtual ~MultiMap() {}
 
 	virtual int Size() const { return m_map.size();}
 	
@@ -22,4 +22,4 @@ public:
 	virtual void Dump(void);
 };
 
-#endif /* __MAP_H__ */
+#endif /* __MULTIMAP_H__ */

@@ -33,7 +33,7 @@ public:
 	// erase any poinrt
 	virtual void Erase(const DataKey &key) = 0;
 
-	virtual void Dump(void) const = 0;
+	virtual void Dump(void) = 0;
 };
 
 #endif /* __CONTAINER_H__ */

@@ -1,18 +1,18 @@
-#ifndef __MAP_H__
-#define __MAP_H__
+#ifndef __UNORDERED_MAP_H__
+#define __UNORDERED_MAP_H__
 
-#include <map>
+#include <unordered_map>
 #include "container.h"
 
-class Map: public Container
+class UnorderedMap: public Container
 {
 private:
-	std::map<DataKey, DataValue> m_map;
+	std::unordered_map<DataKey, DataValue> m_map;
 	
 public:
-	Map() {}
+	UnorderedMap() {}
 
-	virtual ~Map() {}
+	virtual ~UnorderedMap() {}
 
 	virtual int Size() const { return m_map.size();}
 	
@@ -22,4 +22,4 @@ public:
 	virtual void Dump(void);
 };
 
-#endif /* __MAP_H__ */
+#endif /* __UNORDERED_MAP_H__ */

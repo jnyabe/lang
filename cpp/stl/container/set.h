@@ -22,9 +22,7 @@ public:
 	// erase any poinrt
 	virtual void Erase(const DataKey &key);
 
-	virtual void Dump(void) const;
-
-
+	virtual void Dump(void);
 };
 
 #endif /* __SET_H__ */

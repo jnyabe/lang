@@ -1,24 +1,24 @@
-#include "map.h"
+#include "unordered_map.h"
 
-void Map::Insert(const DataKey &key, const DataValue &val)
+void UnorderedMap::Insert(const DataKey &key, const DataValue &val)
 {
 	m_map[key] = val;
 }
 
-void Map::Erase(const DataKey &key)
+void UnorderedMap::Erase(const DataKey &key)
 {
 	auto itr = m_map.find(key);
 	if(itr != m_map.end())
 		m_map.erase(itr);
 }
 
-void Map::Clear(void)
+void UnorderedMap::Clear(void)
 {
 }
 
-void Map::Dump(void)
+void UnorderedMap::Dump(void)
 {
-	printf("Map[%lu]={", m_map.size());
+	printf("UnorderedMap[%lu]={", m_map.size());
 	for(auto itr = m_map.begin(); itr != m_map.end();itr++)
 	{
         printf("%d:%s,"
