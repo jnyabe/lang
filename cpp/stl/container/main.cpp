@@ -5,7 +5,9 @@ int main(int argc, const char* argv[])
 {
 	int ret = 0;
 	Container c;
+
 	
+#if 0	
 	ret = c.Init();
 	assert(ret == 0);
 
@@ -23,6 +25,8 @@ int main(int argc, const char* argv[])
 	
 	ret = c.Dump();
 	assert(ret == 0);
-	
+#endif
+	ret = c.TestInsert();
+	assert(ret == 0);
 	return ret;
 }

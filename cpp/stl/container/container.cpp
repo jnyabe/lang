@@ -144,5 +144,53 @@ int Container::Clear(void)
 	return ret;
 }
 	
+int Container::TestInsert(void)
+{
+	int num = 100000;
+	printf("-- Insert (Back) --\n");
+	// Insert data (back)
+	test_push_back("vector", vector, num);
+	// test_push_back("array", array, num);
+	test_push_back("deque", deque, num);
+	test_push_back("list", list, num);
+	// test_push_back("forward_list", forward_list);
 
+	printf("-- Insert (Front) --\n");
+	// Insert data (front)
+	// test_push_front("vector", vector, num);
+	// test_push_front("array", array, num);
+	test_push_front("deque", deque, num);
+	test_push_front("list", list, num);
+	test_push_front("forward_list", forward_list, num);
 
+	printf("-- Insert (Other) --\n");
+	// Insert data (middle)
+	for(int i=0; i < num; i++) vector.push_back(i);
+	// for(int i=0; i < num; i++) array.push_front(i);
+	for(int i=0; i < num; i++) deque.push_front(i);
+	for(int i=0; i < num; i++) list.push_front(i);
+	for(int i=0; i < num; i++) forward_list.push_front(i);
+	// for(int i=0; i < num; i++) set.insert(i);
+	// for(int i=0; i < num; i++) multiset.insert(i);
+	
+
+	return 0;	
+}
+
+int Container::TestAccess(void)
+{
+	Clear();
+	
+	return 0;
+}
+
+int Container::TestErase(void)
+{
+	Clear();	
+	return 0;
+}
+int Container::TestFind(void)
+{
+	Clear();
+	return 0;
+}
