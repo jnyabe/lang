@@ -27,55 +27,38 @@ using namespace std;
 
 const int num_ent = 10;
 
-typedef int DataType;
-typedef string DataKey;
-typedef string DataValue;
 
-// sequence container
-typedef vector<DataType> Vector;
-typedef array<DataType, num_ent> Array; // C++11
-typedef deque<DataType> Deque;
-typedef list<DataType> List;
-typedef forward_list<DataType> ForwardList;
-
-// key-value container with binary tree (red-black tree)
-typedef set<DataKey> Set;
-typedef multiset<DataKey> MultiSet;
-typedef map<DataKey, DataValue> Map;
-typedef multimap<DataKey, DataValue> MultiMap;
-
-// key-value container with hash
-typedef unordered_set<DataKey> UnorderedSet;                       // C++11
-typedef unordered_multiset<DataKey> UnorderedMultiSet;             // C++11
-typedef unordered_map<DataKey, DataValue> UnorderedMap;            // C++11
-typedef unordered_multimap<DataKey, DataValue> UnorderedMultiMap;  // C++11
-
-// container adapter
-typedef stack<DataType> Stack;
-typedef queue<DataType>     Queue;
-typedef priority_queue<DataType> PriorityQueue;
 
 struct Containers
 {
-	Vector v;
-	Array  a;
-	Deque  d;
-	List   l;
-	ForwardList fl;
-
-	Set    s;
-	MultiSet    ms;
-	UnorderedSet us;
-	UnorderedMultiSet ums;
-	Map    m;
-	MultiMap mm;
-	UnorderedMap um;
-	UnorderedMultiMap umm;
-
-	Stack         st;
-	Queue         q;
-	PriorityQueue pq;
+	typedef int DataType;
+	typedef string DataKey;
+	typedef string DataValue;
 	
+	// Sequence container
+	vector<DataType> vector;
+	array<DataType, num_ent>  array; // C++11
+	deque<DataType> deque;
+	list<DataType> list;
+	forward_list<DataType> forward_list; // C++11
+
+	// Associative conatiner
+	set<DataKey> set;
+	multiset<DataKey> multiset;
+	map<DataKey, DataValue> map;
+	multimap<DataKey, DataValue> multimap;
+
+	// Unordered Associative conatiner
+	unordered_set<DataKey> unordered_set;                     // C++11
+	unordered_multiset<DataKey> unordered_multiset;           // C++11
+	unordered_map<DataKey, DataValue> unordered_map;          // C++11
+	unordered_multimap<DataKey, DataValue> unordered_multimap;  // C++11
+
+	// Container adapter
+	stack<DataType> stack;
+	queue<DataType>     queue;
+	priority_queue<DataType> priority_queue;
+
 };
 
 template<class T>
@@ -163,15 +146,15 @@ void init(Containers &containers)
 	for(int i=0; i < 10; i++)
 	{
 		int value = i % 5;
-		containers.v.push_back(value);
-		containers.a[i] = value;
-		containers.d.push_back(value);
-		containers.l.push_back(value);
-		containers.fl.push_front(value);
+		containers.vector.push_back(value);
+		containers.array[i] = value;
+		containers.deque.push_back(value);
+		containers.list.push_back(value);
+		containers.forward_list.push_front(value);
 
-		containers.st.push(value);
-		containers.q.push(value);
-		containers.pq.push(value);		
+		containers.stack.push(value);
+		containers.queue.push(value);
+		containers.priority_queue.push(value);		
 	}
 	
 	for(int i=0; i < 10; i++)
@@ -179,14 +162,15 @@ void init(Containers &containers)
 		int value = i % 5;
 		string key = std::to_string(value);
 		string val = "v_" + key;
-		containers.s.insert(key);
-		containers.ms.insert(key);
-		containers.us.insert(key);
-		containers.ums.insert(key);
-		containers.m[key] = val;
-		containers.mm.insert(make_pair(key, val));
-		containers.um.insert(make_pair(key, val));
-		containers.umm.insert(make_pair(key, val));
+		containers.set.insert(key);
+		containers.multiset.insert(key);
+		containers.map[key] = val;
+		containers.multimap.insert(make_pair(key, val));
+		
+		containers.unordered_set.insert(key);
+		containers.unordered_multiset.insert(key);
+		containers.unordered_map.insert(make_pair(key, val));
+		containers.unordered_multimap.insert(make_pair(key, val));
 	}
 }
 
@@ -194,45 +178,45 @@ void test_size(Containers &containers)
 {
 	printf("------------- size() API ----------------\n");
 
-	size("vector", containers.v);
-	size("array", containers.a);
-	size("deque", containers.d);
-	size("list", containers.l);
+	size("vector", containers.vector);
+	size("array", containers.array);
+	size("deque", containers.deque);
+	size("list", containers.list);
 	printf("*) forward_list: no size() method\n");
-	size("set", containers.s);
-	size("multiset", containers.ms);
-	size("unordred_set", containers.us);
-	size("unordred_multiset", containers.ums);
+	size("set", containers.set);
+	size("multiset", containers.multiset);
+	size("map", containers.map);
+	size("multimap", containers.multimap);
 	
-	size("map", containers.m);
-	size("multimap", containers.mm);
-	size("unordered_map", containers.um);
-	size("unordered_multimap", containers.umm);	
+	size("unordred_set", containers.unordered_set);
+	size("unordred_multiset", containers.unordered_multiset);
+	size("unordered_map", containers.unordered_map);
+	size("unordered_multimap", containers.unordered_multimap);	
 
-	size("stack", containers.st);
-	size("queue", containers.q);
-	size("priority queue", containers.pq);
+	size("stack", containers.stack);
+	size("queue", containers.queue);
+	size("priority queue", containers.priority_queue);
 	printf("-----------------------------------------\n");
 }
 
 void test_empty(Containers &containers)
 {
-	isEmpty("vector", containers.v);
-	isEmpty("array", containers.a);
-	isEmpty("deque", containers.d);
-	isEmpty("list", containers.l);
-	isEmpty("forward_list", containers.fl);
-	isEmpty("set", containers.s);
-	isEmpty("multiset", containers.ms);
-	isEmpty("unordered_set", containers.us);
-	isEmpty("unordered_multiset", containers.ums);
-	isEmpty("map", containers.m);
-	isEmpty("multimap", containers.mm);
-	isEmpty("unordered_map", containers.um);
-	isEmpty("unordered_multimap", containers.umm);
-	isEmpty("stack", containers.st);
-	isEmpty("queue", containers.q);
-	isEmpty("priority queue", containers.pq);
+	isEmpty("vector", containers.vector);
+	isEmpty("array", containers.array);
+	isEmpty("deque", containers.deque);
+	isEmpty("list", containers.list);
+	isEmpty("forward_list", containers.forward_list);
+	isEmpty("set", containers.set);
+	isEmpty("multiset", containers.multiset);
+	isEmpty("map", containers.map);
+	isEmpty("multimap", containers.multimap);
+	isEmpty("unordered_set", containers.unordered_set);
+	isEmpty("unordered_multiset", containers.unordered_multiset);
+	isEmpty("unordered_map", containers.unordered_map);
+	isEmpty("unordered_multimap", containers.unordered_multimap);
+	isEmpty("stack", containers.stack);
+	isEmpty("queue", containers.queue);
+	isEmpty("priority queue", containers.priority_queue);
 	printf("-----------------------------------------\n");
 }
 
@@ -240,24 +224,25 @@ void dump(Containers &containers)
 {
 	printf("--------------- dump ------------------\n");
 
-	dump("vector", containers.v);
-	dump("array", containers.a);
-	dump("deque", containers.d);
-	dump("list", containers.l);
-	dump("forward_list", containers.fl);  
-	dump("set", containers.s);
-	dump("multiset", containers.ms);
-	dump("unordred_set", containers.us);
-	dump("unordred_multiset", containers.ums);
+	dump("vector", containers.vector);
+	dump("array", containers.array);
+	dump("deque", containers.deque);
+	dump("list", containers.list);
+	dump("forward_list", containers.forward_list);  
+	dump("set", containers.set);
+	dump("multiset", containers.multiset);
 	
-	dump_keyval("map", containers.m);
-	dump_keyval("multimap", containers.mm);
-	dump_keyval("unordered_map", containers.um);
-	dump_keyval("unordered_multimap", containers.umm);	
+	dump_keyval("map", containers.map);
+	dump_keyval("multimap", containers.multimap);
+	
+	dump("unordred_set", containers.unordered_set);
+	dump("unordred_multiset", containers.unordered_multiset);
+	dump_keyval("unordered_map", containers.unordered_map);
+	dump_keyval("unordered_multimap", containers.unordered_multimap);
 
-	dump_stack("stack", containers.st);
-	dump_queue("queue", containers.q);
-	dump_stack("priority queue", containers.pq);
+	dump_stack("stack", containers.stack);
+	dump_queue("queue", containers.queue);
+	dump_stack("priority queue", containers.priority_queue);
 	printf("-----------------------------------------\n");
 }
 
@@ -266,19 +251,22 @@ void clear(Containers &containers)
 {
 	printf("--------------- clear ------------------\n");
 	// Clear
-	containers.v.clear();
+	containers.vector.clear();
 	printf("*) array: no clear() method\n");
-	containers.d.clear();
-	containers.l.clear();
-	containers.fl.clear();
-	containers.s.clear();
-	containers.ms.clear();
-	containers.us.clear();
-	containers.ums.clear();
-	containers.m.clear();
-	containers.mm.clear();
-	containers.um.clear();
-	containers.umm.clear();
+	containers.deque.clear();
+	containers.list.clear();
+	containers.forward_list.clear();
+	
+	containers.set.clear();
+	containers.multiset.clear();
+	containers.map.clear();
+	containers.multimap.clear();
+	
+	containers.unordered_set.clear();
+	containers.unordered_multiset.clear();
+	containers.unordered_map.clear();
+	containers.unordered_multimap.clear();
+	
 	printf("*) stack: no clear() method\n");
 	printf("*) queue: no clear() method\n");
 	printf("*) priority_queue: no clear() method\n");
