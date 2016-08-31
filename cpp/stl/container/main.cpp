@@ -27,8 +27,6 @@ using namespace std;
 
 const int num_ent = 10;
 
-
-
 struct Containers
 {
 	typedef int DataType;
