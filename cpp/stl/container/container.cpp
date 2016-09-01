@@ -2,28 +2,26 @@
 
 using namespace std;
 
-int Container::Init(void)
+int Container::Init(int num)
 {
+	Clear();
 	// Insert data
-	for(int i=0; i < 10; i++)
+	for(int i=0; i < num; i++)
 	{
-		int value = i % 5;
-		vector.push_back(value);
-		array[i] = value;
-		deque.push_back(value);
-		list.push_back(value);
-		forward_list.push_front(value);
-
-		stack.push(value);
-		queue.push(value);
-		priority_queue.push(value);		
+		vector.push_back(i);
+		array[i % array.size()] = i;
+		deque.push_back(i);
+		list.push_back(i);
+		forward_list.push_front(i);
+		stack.push(i);
+		queue.push(i);
+		priority_queue.push(i);		
 	}
 	
-	for(int i=0; i < 10; i++)
+	for(int i=0; i < num; i++)
 	{
-		int value = i % 5;
-		string key = std::to_string(value);
-		string val(3, 'a' + value);
+		string key = std::to_string(i);
+		string val(3, 'a' + (i % 26));
 		set.insert(key);
 		multiset.insert(key);
 		map[key] = val;
@@ -37,11 +35,10 @@ int Container::Init(void)
 	return 0;
 }
 
-int Container::TestSize(void)
+int Container::Size(void)
 {
 	int ret = 0;
 	printf("------------- size() API ----------------\n");
-
 	size("vector", vector);
 	size("array", array);
 	size("deque", deque);
@@ -64,7 +61,7 @@ int Container::TestSize(void)
 	return ret;
 }
 
-int Container::TestEmpty(void)
+int Container::Empty(void)
 {
 	int ret = 0;
 	isEmpty("vector", vector);
@@ -119,10 +116,10 @@ int Container::Dump(void)
 int Container::Clear(void)
 {
 	int ret = 0;
-	printf("--------------- clear ------------------\n");
+	// printf("--------------- clear ------------------\n");
 	// Clear
 	vector.clear();
-	printf("*) array: no clear() method\n");
+	// printf("*) array: no clear() method\n");
 	deque.clear();
 	list.clear();
 	forward_list.clear();
@@ -137,60 +134,141 @@ int Container::Clear(void)
 	unordered_map.clear();
 	unordered_multimap.clear();
 	
-	printf("*) stack: no clear() method\n");
-	printf("*) queue: no clear() method\n");
-	printf("*) priority_queue: no clear() method\n");
-	printf("-----------------------------------------\n");
+	// printf("*) stack: no clear() method\n");
+	// printf("*) queue: no clear() method\n");
+	// printf("*) priority_queue: no clear() method\n");
+	
+	// repeat pop until it becomes emtpty
+	while(!stack.empty()) stack.pop(); 
+	while(!queue.empty()) queue.pop(); 
+	while(!priority_queue.empty()) priority_queue.pop(); 
+	
+
+	// printf("-----------------------------------------\n");
 	return ret;
 }
 	
 int Container::TestInsert(void)
 {
-	int num = 100000;
-	printf("-- Insert (Back) --\n");
+	Clear();
+	printf("Back\n");
 	// Insert data (back)
-	test_push_back("vector", vector, num);
-	// test_push_back("array", array, num);
-	test_push_back("deque", deque, num);
-	test_push_back("list", list, num);
+	test_push_back("vector", vector, m_num_test);
+	// test_push_back("array", array, m_num_test);
+	test_push_back("deque", deque, m_num_test);
+	test_push_back("list", list, m_num_test);
 	// test_push_back("forward_list", forward_list);
 
-	printf("-- Insert (Front) --\n");
+	Clear();
+	printf("Front\n");
 	// Insert data (front)
-	// test_push_front("vector", vector, num);
-	// test_push_front("array", array, num);
-	test_push_front("deque", deque, num);
-	test_push_front("list", list, num);
-	test_push_front("forward_list", forward_list, num);
+	// test_push_front("vector", vector, m_num_test);
+	// test_push_front("array", array, m_num_test);
+	test_push_front("deque", deque, m_num_test);
+	test_push_front("list", list, m_num_test);
+	test_push_front("forward_list", forward_list, m_num_test);
 
-	printf("-- Insert (Other) --\n");
-	// Insert data (middle)
-	for(int i=0; i < num; i++) vector.push_back(i);
-	// for(int i=0; i < num; i++) array.push_front(i);
-	for(int i=0; i < num; i++) deque.push_front(i);
-	for(int i=0; i < num; i++) list.push_front(i);
-	for(int i=0; i < num; i++) forward_list.push_front(i);
-	// for(int i=0; i < num; i++) set.insert(i);
-	// for(int i=0; i < num; i++) multiset.insert(i);
+	Clear();
+	printf("Other\n");
 	
+#if 0
+	// Insert data (middle)
+	for(int i=0; i < m_num_test; i++) vector.push_back(i);
+	// for(int i=0; i < m_num_test; i++) array.push_front(i);
+	for(int i=0; i < m_num_test; i++) deque.push_front(i);
+	for(int i=0; i < m_num_test; i++) list.push_front(i);
+	for(int i=0; i < m_num_test; i++) forward_list.push_front(i);
+	// for(int i=0; i < m_num_test; i++) set.insert(i);
+	// for(int i=0; i < m_num_test; i++) multiset.insert(i);
+#endif	
 
 	return 0;	
 }
 
+int Container::TestErase(void)
+{
+	Init(m_num_test);
+	printf("%s\n", __FUNCTION__);
+	printf("1)Back\n");
+	// Erase data (back)
+	
+	test_pop_back("vector", vector, m_num_test);
+	// test_push_back("array", array, m_num_test);
+	test_pop_back("deque", deque, m_num_test);
+	test_pop_back("list", list, m_num_test);
+	// test_pop_back("forward_list", forward_list);
+
+	Init(m_num_test);
+	printf("2)Front\n");
+	// Erase data (front)
+	// test_pop_front("vector", vector, m_num_test);
+	// test_pop_front("array", array, m_num_test);
+	test_pop_front("deque", deque, m_num_test);
+	test_pop_front("list", list, m_num_test);
+	test_pop_front("forward_list", forward_list, m_num_test);
+
+	Init(m_num_test);
+	printf("3)Other\n");
+	// Erase data (middle)
+	for(int i=0; i < m_num_test; i++) vector.push_back(i);
+	// for(int i=0; i < m_num_test; i++) array.push_front(i);
+	for(int i=0; i < m_num_test; i++) deque.push_front(i);
+	for(int i=0; i < m_num_test; i++) list.push_front(i);
+	for(int i=0; i < m_num_test; i++) forward_list.push_front(i);
+	// for(int i=0; i < m_num_test; i++) set.insert(i);
+	// for(int i=0; i < m_num_test; i++) multiset.insert(i);	
+	return 0;
+}
+
 int Container::TestAccess(void)
 {
-	Clear();
+	Init(m_num_test);
+	printf("-- Random Access --\n");
+	test_random_access("vector", vector, m_num_test);
+	// test_random_access("array",  array, m_num_test);
+	test_random_access("deque", deque, m_num_test);
+	// test_random_access_back("list", list, m_num_test);
+	// test_random_access_back("forward_list", forward_list);
+	// test_random_access("set", set, m_num_test);
+	// test_random_access("multiset", multiset, m_num_test);
+	// test_random_access("map", map, m_num_test);
+	// test_random_access("multimap", multmap, m_num_test);
+	// test_random_access("unordered_set", unordered_set, m_num_test);
+	// test_random_access("unordered_multiset", unordered_multiset, m_num_test);
+	// test_random_access("unordered_map", unordered_map, m_num_test);
+	// test_random_access("unordered_multimap", unordered_multimap, m_num_test);
 	
 	return 0;
 }
 
-int Container::TestErase(void)
+
+int Container::TestLookFor(void)
 {
-	Clear();	
+	Init(m_num_test);
+	printf("[Look for]\n");
+	test_look_for("vector", vector, m_num_test);
+	// test_look_for("array",  array, m_num_test);
+	test_look_for("deque", deque, m_num_test);
+	// test_look_for_back("list", list, m_num_test);
+	// test_look_for_back("forward_list", forward_list);
+	// test_look_for("set", set, m_num_test);
+	// test_look_for("multiset", multiset, m_num_test);
+	// test_look_for("map", map, m_num_test);
+	// test_look_for("multimap", multmap, m_num_test);
+	// test_look_for("unordered_set", unordered_set, m_num_test);
+	// test_look_for("unordered_multiset", unordered_multiset, m_num_test);
+	// test_look_for("unordered_map", unordered_map, m_num_test);
+	// test_look_for("unordered_multimap", unordered_multimap, m_num_test);
+		
 	return 0;
 }
-int Container::TestFind(void)
+
+int Container::Test(void)
 {
-	Clear();
+	for(int i=0; i< 10; i++)
+	{
+		Init(100);
+	}
+	
 	return 0;
 }
