@@ -1,5 +1,57 @@
 #include "heap_sort.h"
 
+int HeapSort::upheap(Array &array, int n) const
+{
+	while(n > 0)
+	{
+		int m = parent(n);
+		if(array[m] < array[n])
+		{
+			array.Swap(m, n);
+		} else {
+			break;
+		}
+		n = m;
+	}
+	return 0;
+}
+
+int HeapSort::downheap(Array &array, int n) const
+{
+	int ret = 0;
+	int m = 0;
+	int tmp = 0;
+
+	for(;;)
+	{
+		int lc = leftChild(m);
+		int rc = rightChild(m);
+		
+		if(lc >= n)
+		{
+			break;
+		}
+		
+		if(array[lc] > array[tmp])
+		{
+			tmp = lc;
+		}
+		
+		if((rc < n) && (array[rc] > array[tmp]))
+		{
+			tmp = rc;
+		}
+
+		if(tmp == m)
+		{
+			break;
+		}
+		array.Swap(tmp, m);
+		m = tmp;
+	}
+	return ret;
+}
+
 int HeapSort::siftUp(Array &array, int n) const
 {
 	int ret =0;
@@ -81,9 +133,47 @@ int HeapSort::siftDown(Array &array, int root, int bottom) const
 	return 0;
 }
 
-int HeapSort::Sort(Array &array) const
+int HeapSort::sort0(Array &array) const
 {
+	// wikipedia
+	int i=0;
 
+	// arrayの先頭から順に、ヒープを成長させる
+	//  0  1  2  3 | 4  5 ..
+	// [ ][ ][ ][ ] [ ][ ]
+	// ヒープ       | 未処理の入力
+	// 配列全部がヒープにいれかわるまで繰りかえす
+	
+	while(++i < array.Size())
+	{
+		// array[i]に、ヒープに新しくデータがあるものとして...
+		// 先頭からarray[i]までがヒープになるよう再構成する
+		array.Print("Ins " + std::to_string(array[i]));
+		upheap(array, i);
+	}
+
+	// arrayの先頭か順に、ヒープから取り出して並べる
+	//  0  1  2 | 3   4  5 ..
+	// [ ][ ][ ] [ ] [ ][ ]
+	//  ヒープ   | ソート済みの配列
+	//         <===
+
+	// ヒープが全部配列に入れかわるまで繰りかえす
+	while(--i> 0)
+	{
+		/// ヒープの先頭要素を、配列に移動すると同時に、ヒープの最後の
+		/// 要素を、ヒープの先頭に移動する
+		array.Swap(0,i);
+
+		/// array[0]に、ヒープの最後から移動されたデータがあるものとし
+		/// てaray[i-1]までがヒープになるように再構成
+		downheap(array, i);
+	}
+	return 0;
+}
+
+int HeapSort::sort1(Array &array) const
+{
 	// create heap with bottom-up
 	for(int i = (array.Size() - 1) / 2 ; i >=0; i--)
 	{
@@ -101,4 +191,9 @@ int HeapSort::Sort(Array &array) const
 		// array.Print("[heap]");		
 	}
 	return 0;
+}
+
+int HeapSort::Sort(Array &array) const
+{
+	return sort0(array);
 }

@@ -6,9 +6,21 @@
 class HeapSort: public SortBase
 {
 private:
+	
+	inline int leftChild(int i) const { return (i+1) * 2 - 1; }
+	inline int rightChild(int i) const { return (i+1) * 2;}
+	inline int parent(int i) const { return (i+1) / 2 - 1; }
+	
+	// from wiki
+	int upheap(Array &array, int n) const;
+	int downheap(Array &array, int n) const;
+	
 	int siftDown(Array &array, int root, int bottom) const;
 	int siftDown(Array &array, int n) const;
 	int siftUp(Array &array, int n) const;
+
+	int sort0(Array &array) const;
+	int sort1(Array &array) const;
 public:
 	HeapSort()
 	{
