@@ -34,7 +34,7 @@ void Graph::CreateSample(void)
 		{
 			if (G[i][j])
 			{
-				printf("add %d->%d\n", i+1, j+1);
+				//				printf("add %d->%d\n", i+1, j+1);
 				AddEdge(i+1, j+1, G[i][j]);
 			}
 		}

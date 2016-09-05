@@ -4,25 +4,36 @@
 /// @brief Vertex class
 class Vertex
 {
+	
 public:
-	int m_id;
+	const int UNKNOWN_COST = -1;
+	int  m_id;
 
+	// for Dijkstra's Algorithm
+	bool m_done;      // 確定ノードかどうか? 
+	int  m_min_cost;  // このノードへの最小コスト 
+	
 	/// @brief Defalt costructor
-	Vertex(): m_id(0) {}
+	Vertex(): m_id(0), m_done(false), m_min_cost(UNKNOWN_COST) {}
 
 	/// @brief Constructor with ID
 	/// @pram[in] id ID for the vertex
-	Vertex(int id): m_id(id) {}
+	Vertex(int id): m_id(id), m_done(false), m_min_cost(UNKNOWN_COST) {}
 
 	/// @brief Copy Constructor
 	/// @pram[in] v Vertex object to be copied
-	Vertex(const Vertex& v): m_id(v.m_id) {}
+	Vertex(const Vertex& v):
+		m_id(v.m_id), m_done(v.m_done), m_min_cost(v.m_min_cost) {}
 
 	/// @brief Destructor
 	virtual ~Vertex() {}
 
 	/// @brief Assignment operator
-	const Vertex& operator=(const Vertex& v) { m_id = v.m_id; return *this; }
+	const Vertex& operator=(const Vertex& v) {
+		m_id = v.m_id;
+		m_done = v.m_done;
+		m_min_cost = v.m_min_cost;
+		return *this; }
 
 	/// @brief Equality operator
 	bool operator==(const Vertex& v) const { return this->m_id == v.m_id; }

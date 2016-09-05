@@ -3,17 +3,26 @@
 #include "dijkstra.h"
 #include "a-star.h"
 
-
+#include <iostream>
 
 int main(int argc, const char* argv[])
 {
-
+	int ret = 0;
 	// AdjList graph;
-	AdjMatrix graph;	
+	AdjMatrix graph;
+	Vertex s(1);
+	Vertex g(6);
+	Path path;
+	Dijkstar dijkstar;
 	graph.CreateSample();
-	graph.Dump();
-	graph.Clear();
-	graph.Dump();
 
-	return 0;
+	// graph.Dump();
+	
+	ret = dijkstar.GetShortestPath(graph, s, g, path);
+
+	for(const auto& v: path)
+	{
+		std::cout << v.m_id << "->";
+	}
+	return ret;
 }

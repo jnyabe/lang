@@ -78,7 +78,14 @@ private:
 			sout << std::chrono::duration_cast<std::chrono::microseconds>(m_end -m_start).count() << " usec.";
 			return sout.str();
 		}
+		
+		void Print(const std::string &label)
+		{
+			std::cout << "\t" << label << " : ";
+			std::cout << GetElapsed() << std::endl;			
+		}
 	};
+
 
 	std::string padding(const std::string &label, size_t num = 20)
 	{
@@ -162,8 +169,7 @@ private:
 			container.push_back(i);
 		}
 		t.Stop();
-		std::cout << padding(label) << "[push_back * " << num << " ] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[push_back * " + std::to_string(num) + "]");
 	}
 	template<class T>
 	void test_push_front(std::string label, T& container, int num)
@@ -175,8 +181,7 @@ private:
 			container.push_front(i);
 		}
 		t.Stop();
-		std::cout << padding(label) << "[push_front * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[push_front * " + std::to_string(num) + "]");
 	}
 	template<class T>
 	void test_insert(std::string label, T& container, int num)
@@ -188,8 +193,7 @@ private:
 			container.push_front(i);
 		}
 		t.Stop();
-		std::cout << padding(label) << "[push_front * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[push_front *" + std::to_string(num) + "]");
 	}
 
 		template<class T>
@@ -202,8 +206,7 @@ private:
 			container.pop_back();
 		}
 		t.Stop();
-		std::cout << padding(label) << "[pop_back * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[pop_back * " + std::to_string(num) + "]");
 	}
 	template<class T>
 	void test_pop_front(std::string label, T& container, int num)
@@ -215,8 +218,7 @@ private:
 			container.pop_front();
 		}
 		t.Stop();
-		std::cout << padding(label) << "[pop_front * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[pop_front * " + std::to_string(num) + "]");
 	}
 	template<class T>
 	void test_random_access(std::string label, T& container, int num)
@@ -228,8 +230,7 @@ private:
 			container.at(i);
 		}
 		t.Stop();
-		std::cout << padding(label) << "[at * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[random_access * " + std::to_string(num) + "]");		
 	}
 	
 	template<class T>
@@ -242,8 +243,7 @@ private:
 			
 		}
 		t.Stop();
-		std::cout << padding(label) << "[look for * " << num << "] : ";
-		std::cout << t.GetElapsed() << std::endl;
+		t.Print(padding(label) + "[look for * " + std::to_string(num) + "]");		
 	}
 
 public:

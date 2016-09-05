@@ -6,6 +6,15 @@ AdjMatrix::AdjMatrix(int num_vertex)
 	m_matrix.resize(m_num_vertex * m_num_vertex, 0);
 }
 
+AdjMatrix::AdjMatrix(const AdjMatrix& mat)
+	: Graph(mat)
+{
+	m_num_vertex = mat.m_num_vertex;
+	m_matrix.resize(m_num_vertex * m_num_vertex, 0);
+	std::copy(mat.m_matrix.begin(), mat.m_matrix.end(), back_inserter(m_matrix));
+}
+
+
 int AdjMatrix::AddVertex(const Vertex &v)
 {
 	if(v.m_id > m_num_vertex)

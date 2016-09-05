@@ -18,6 +18,8 @@ public:
 	/// @brief Constructor with size
 	AdjMatrix(int num_vertex);
 
+	AdjMatrix(const AdjMatrix& mat);
+	
 	/// @brief Destructor
 	virtual ~AdjMatrix() {}
 

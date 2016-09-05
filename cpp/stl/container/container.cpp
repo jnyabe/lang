@@ -151,7 +151,8 @@ int Container::Clear(void)
 int Container::TestInsert(void)
 {
 	Clear();
-	printf("Back\n");
+	printf("[Insertion]\n");
+	printf("-Back\n");
 	// Insert data (back)
 	test_push_back("vector", vector, m_num_test);
 	// test_push_back("array", array, m_num_test);
@@ -160,7 +161,7 @@ int Container::TestInsert(void)
 	// test_push_back("forward_list", forward_list);
 
 	Clear();
-	printf("Front\n");
+	printf("-Front\n");
 	// Insert data (front)
 	// test_push_front("vector", vector, m_num_test);
 	// test_push_front("array", array, m_num_test);
@@ -169,7 +170,7 @@ int Container::TestInsert(void)
 	test_push_front("forward_list", forward_list, m_num_test);
 
 	Clear();
-	printf("Other\n");
+	printf("-Other\n");
 	
 #if 0
 	// Insert data (middle)
@@ -188,8 +189,8 @@ int Container::TestInsert(void)
 int Container::TestErase(void)
 {
 	Init(m_num_test);
-	printf("%s\n", __FUNCTION__);
-	printf("1)Back\n");
+	printf("[Erase]\n");
+	printf("-Back\n");
 	// Erase data (back)
 	
 	test_pop_back("vector", vector, m_num_test);
@@ -199,7 +200,7 @@ int Container::TestErase(void)
 	// test_pop_back("forward_list", forward_list);
 
 	Init(m_num_test);
-	printf("2)Front\n");
+	printf("-Front\n");
 	// Erase data (front)
 	// test_pop_front("vector", vector, m_num_test);
 	// test_pop_front("array", array, m_num_test);
@@ -208,7 +209,7 @@ int Container::TestErase(void)
 	test_pop_front("forward_list", forward_list, m_num_test);
 
 	Init(m_num_test);
-	printf("3)Other\n");
+	printf("-Other\n");
 	// Erase data (middle)
 	for(int i=0; i < m_num_test; i++) vector.push_back(i);
 	// for(int i=0; i < m_num_test; i++) array.push_front(i);
@@ -223,7 +224,7 @@ int Container::TestErase(void)
 int Container::TestAccess(void)
 {
 	Init(m_num_test);
-	printf("-- Random Access --\n");
+	printf("[Random Access]\n");
 	test_random_access("vector", vector, m_num_test);
 	// test_random_access("array",  array, m_num_test);
 	test_random_access("deque", deque, m_num_test);
